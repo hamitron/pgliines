@@ -1,0 +1,8 @@
+
+<h1> Add a new milestone </h1>
+
+	<p><%= form_for @milestone do |s| %>  </p>
+			<p><%= s.text_field :name,  placeholder: "Milestone name" %></p>
+			<p><%= s.text_field :description, placeholder: "Description" %></p>
+			<%= s.submit "Add Milestone"%>
+			<% end %>
