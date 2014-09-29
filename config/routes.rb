@@ -1,18 +1,9 @@
 Rails.application.routes.draw do
 resources :milestones 
-  
+resources :users  
 
   resource :session, only: [:new, :create, :destroy]
 
-  get 'welcome/index'
-  get 'users' => 'users#index', as: :users
-  get 'users/new' => 'users#new', as: :new_user
-  post 'users' => 'users#create'
-  get 'users/:id' => 'users#show', as: :user
-  get 'users/:id/edit' => 'users#edit', as: :edit_user
-  put 'users/:id' => 'users#update'
-  patch 'users/:id' => 'users#update'
-  delete 'users/:id' => 'users#destroy'
 root 'welcome#index'
 
 
