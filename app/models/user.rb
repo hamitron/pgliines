@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   has_secure_password 
-  has_many :milestones
+  has_many :milestones, -> {order("position ASC")}
   accepts_nested_attributes_for :milestones
 	has_attached_file  :image
 

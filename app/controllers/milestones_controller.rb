@@ -13,7 +13,7 @@ class MilestonesController < ApplicationController
 
 	def create
 
-		@milestone = Milestone.new(params.require(:milestone).permit(:name, :description, :image, :project, :id))
+		@milestone = Milestone.new(milestone_params)
 		@milestone.user_id = current_user.id
 			@milestone.save
 			redirect_to user_path(current_user.id)
@@ -27,7 +27,7 @@ class MilestonesController < ApplicationController
 
 	def update
 		@milestone = Milestone.find(params[:id])
-		@milestone.update_attributes(params.require(:milestone).permit(:name, :description, :image, :project))
+		@milestone.update_attributes(milestone_params)
 		if @milestone.save
 			redirect_to user_path(current_user.id)
 		else
@@ -43,7 +43,23 @@ class MilestonesController < ApplicationController
 		
 	end
 
-	
+	def move_milestone_up
+ 		@milestone = Milestone.find(params[:id])
+ 		@milestone.move_higher
+ 		redirect_to user_path(current_user.id)
+  	end
+
+	def move_milestone_down
+	   	@milestone = Milestone.find(params[:id])
+ 		@milestone.move_lower
+ 		redirect_to user_path(current_user.id)
+	end
+
+private
+
+	def milestone_params
+		params.require(:milestone).permit(:name, :description, :image, :project, :position)
+	end
 
 
 end

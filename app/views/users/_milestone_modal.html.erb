@@ -11,9 +11,11 @@
                 <h2> <%= f.name  %></h2>
                 <p>by <%=link_to User.find(f.user_id.to_s).name, user_path(f.user_id) %> </p>
                 <p> <%= f.description %> </p> 
-                <p> <% if f.user_id == current_user.id %>
-                <a href="#<%=f.id%>edit" role="tab" data-toggle="tab">edit</a> | 
-                <em><%= link_to "delete", milestone_path(f.id), method: :delete, data: {confirm:"are you sure?"} %></em></p>
+                <% if f.user_id == current_user.id %>
+                <p><a href="#<%=f.id%>edit" role="tab" data-toggle="tab">edit</a> | 
+                <em><%= link_to "delete", milestone_path(f.id), method: :delete, data: {confirm:"are you sure?"} %></em>
+                <%= link_to "move up", milestone_path(f.id), method: :move_up %>
+                <%= link_to "move down", milestone_path(f.id), method: :move_down %></p>
                 <%end %> 
                 
     

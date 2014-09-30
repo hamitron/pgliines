@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @milestones = Milestone.all
+    @milestones = Milestone.where(user_id: @user.id)
     @milestones.build
     @projects = Milestone.where(params[:project])
 
