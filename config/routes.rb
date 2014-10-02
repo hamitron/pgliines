@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+resources :users
 resources :milestones 
-resources :users  
+
 
   resource :session, only: [:new, :create, :destroy]
 

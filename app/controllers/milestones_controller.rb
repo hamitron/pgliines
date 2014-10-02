@@ -12,12 +12,13 @@ class MilestonesController < ApplicationController
 	end
 
 	def create
-
-		@milestone = Milestone.new(milestone_params)
-		@milestone.user_id = current_user.id
-			@milestone.save
+		@user = User.find(current_user)
+		@milestone = @user.milestones.new(milestone_params)
+			if @milestone.save
 			redirect_to user_path(current_user.id)
-		
+		else 
+			render 'new'
+		end
 	end
 
 	def edit
