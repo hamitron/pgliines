@@ -1,0 +1,2 @@
+class TwiinesController < ApplicationController
+end
