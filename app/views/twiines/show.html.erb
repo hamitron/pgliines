@@ -1,0 +1,48 @@
+
+<%#= render 'milestone_modal' %>
+
+<div class="row">
+	<div class="col-md-1">
+		<div class="ratio" style="background-color:white" alt="responsive img"></div>
+		</div>
+		<h3><%= @twiine.name %> </h3>
+</div>
+
+
+	<div class="row">
+
+		<% @milestones.each do |p| %>
+			<div class="col-md-3">
+				<div class="ratio" style="background-color: white" alt="responsive img">
+				</div>
+
+					<div class="carousel-caption">
+
+						<div class="carousel-caption-inner">
+							<h1><span class="label label-default"><%= p.position %></span></h1>
+							<h1><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h1>
+							
+							<p> by <em> <%= User.find(p.user_id.to_s).name %></em> </p>
+							
+							<% if p.project  %>
+								<p>  working on <em><%= p.project %> </em>  </p>
+							<%end%>
+
+						</div>
+
+					</div>
+			</div>
+		<% end %>
+
+
+
+		<% if current_user == @user %>
+		<div class="col-md-3">
+			
+				<%= render 'milestone_form' %>
+
+		</div>
+		<% end %>
+
+	</div>
+</div>

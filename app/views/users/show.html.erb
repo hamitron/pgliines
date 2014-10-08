@@ -15,23 +15,21 @@
 
 
 	<div class="row">
-	<%# @milestones.where(:user_id => @user.id).each do |p|%>
-		<% @milestones.each do |p| %>
+	
+		<% @twiines.each do |p| %>
 			<div class="col-md-3">
-				<div class="ratio" style="background-image:url(<%=p.image.url%>)" alt="responsive img">
+				<div class="ratio" style="background-color:white" alt="responsive img">
 				</div>
 
 					<div class="carousel-caption">
 
 						<div class="carousel-caption-inner">
-							<h1><span class="label label-default"><%= p.position %></span></h1>
-							<h1><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h1>
+							<h3><%= link_to p.name, user_twiines_path(p.id) %></h3>
+							Milestones Count: <%= p.milestones.count %>
 							
-							<p> by <em> <%= User.find(p.user_id.to_s).name %></em> </p>
 							
-							<% if p.project != ""  %>
-								<p>  working on <em><%= p.project %> </em>  </p>
-							<%end%>
+							
+							
 
 						</div>
 
@@ -44,7 +42,7 @@
 		<% if current_user == @user %>
 		<div class="col-md-3">
 			
-				<%= render 'milestone_form' %>
+				<%= render 'twiine_form' %>
 
 		</div>
 		<% end %>

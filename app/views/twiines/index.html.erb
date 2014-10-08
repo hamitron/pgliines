@@ -1,0 +1,37 @@
+
+<h1>Twiines!</h1>
+<hr>
+<%= render 'index_modal' %>
+<% @twiines.each_slice(1) do |slice| %>
+
+	<% slice.each do |u| %>
+
+		<div class="row panel">
+		<div class="col-md-1">
+	        <div class="ratio" style="background-image:url(<%=u.image.url%>); border: 1px solid #49F2C7;" alt="responsive img"> 
+	            	  
+	            	
+			</div>
+					
+		<% @milestones.where(:twiine_id => u.id).take(5).each do |p|%>
+			
+			</div>
+				 	<div class="col-md-2">
+	            	  <div class="ratio" style="background-image:url(<%=p.image.url%>)" alt="responsive img">
+	            	  <div class="carousel-caption">
+					
+	<h3> <a data-toggle="modal" data-target="#index<%=p.id%>"> <%= truncate(p.name, length: 32) %> </a></h3>
+	       
+	        </div>
+	             	 </div>
+	       	 	
+	       	  
+			
+			
+			<% end %>
+		</div>
+	
+	<% end %>
+
+</div>
+<% end %>

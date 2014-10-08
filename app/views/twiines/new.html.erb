@@ -1,0 +1,7 @@
+<h1> Add a new twiine </h1>
+
+	<p><%= form_for @twiine do |f| %>  </p>
+			<p><%= f.text_field :name,  placeholder: "twiine name" %></p>
+			<p><%= f.text_field :category, placeholder: "category" %></p>
+			<%= f.submit "Add twiine"%>
+	<% end %>

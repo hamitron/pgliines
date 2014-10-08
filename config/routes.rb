@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-resources :users
-resources :milestones 
+resources :users do 
+  resources :milestones 
+  resources :twiines
+end
 
-
-  resource :session, only: [:new, :create, :destroy]
+resource :session, only: [:new, :create, :destroy]
 
 root 'welcome#index'
 

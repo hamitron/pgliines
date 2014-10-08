@@ -13,7 +13,8 @@ class MilestonesController < ApplicationController
 
 	def create
 		@user = User.find(current_user)
-		@milestone = @user.milestones.new(milestone_params)
+		@twiine = Twiine.find(params[:id])
+		@milestone = @twiine.milestones.new(milestone_params)
 			if @milestone.save
 			redirect_to user_path(current_user.id)
 		else 
