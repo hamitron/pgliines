@@ -5,7 +5,7 @@
         
         <div class="tab-pane " id="new">
              
-                <%= form_for ([@user, @twiine]) do |s| %>
+                <%= form_for @twiine do |s| %>
                     <div class="form-group">
                         <label for="name">Name</label>
                             <%= s.text_field :name, class: "form-control",  placeholder: "twiine name" %> 

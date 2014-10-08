@@ -1,6 +1,4 @@
 
-<%= render 'milestone_modal' %>
-
 <div class="row">
 	<div class="col-md-1">
 		<div class="ratio" style="background-image:url(<%=@user.image%>)" alt="responsive img"></div>
@@ -24,8 +22,11 @@
 					<div class="carousel-caption">
 
 						<div class="carousel-caption-inner">
-							<h3><%= link_to p.name, user_twiines_path(p.id) %></h3>
+							<h3><%= link_to p.name, twiine_path(p) %></h3>
 							Milestones Count: <%= p.milestones.count %>
+							Twiine ID: <%= p.id %>
+							<%= @milestones.where(twiine_id: p.id).count %>
+
 							
 							
 							

@@ -2,7 +2,7 @@ class TwiinesController < ApplicationController
 
 
 	def index
-		@twiine = Twiine.find(params[:user_id])
+		@twiine = Twiine.find(params[current_user.id])
 		@user = User.find(params[:id])
 		@milestones = Milestone.where(twiine_id: @twiine.id)
 		@milestones.build
@@ -10,6 +10,8 @@ class TwiinesController < ApplicationController
 
 	def show
 		@twiine = Twiine.find(params[:id])
+		@user = User.find(@twiine.user_id)
+		@milestone = @twiine.milestones.new
 		@milestones = Milestone.where(twiine_id: @twiine.id)
 		@milestones.build
 	end
@@ -37,7 +39,7 @@ private
 
 def twiine_params
 	params.require(:twiine).permit(:name, :fulfillment, :category,
-		milestones_attributes: [:id, :name, :description, :image])
+		milestones_attributes:[:name, :description, :image, :position, :user_id])
 end
 
 

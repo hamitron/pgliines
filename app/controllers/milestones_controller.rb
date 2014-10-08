@@ -1,19 +1,15 @@
 class MilestonesController < ApplicationController 
-
-
-	def index
-		@users = User.all
-		@milestones = Milestone.all
-
+	before_filter :get_twiine
+	def get_twiine
+		@twiine = Twiine.find(params[:twiine_id])
 	end
 
-	def new
-		@milestone = Milestone.new
+	def show 
+		@milestone = @twiine.milestones.find(params[:id])
 	end
-
 	def create
-		@user = User.find(current_user)
-		@twiine = Twiine.find(params[:id])
+		@user = User.find(current_user.id)
+		@twiine = Twiine.find(params[:twiine_id])
 		@milestone = @twiine.milestones.new(milestone_params)
 			if @milestone.save
 			redirect_to user_path(current_user.id)
@@ -22,10 +18,6 @@ class MilestonesController < ApplicationController
 		end
 	end
 
-	def edit
-		@milestone = Milestone.find(params[:id])
-		
-	end
 
 	def update
 		@milestone = Milestone.find(params[:id])
@@ -39,23 +31,12 @@ class MilestonesController < ApplicationController
 	end
 
 	def destroy
-		m = Milestone.find(params[:id])
+		m = @twiine.milestones.find(params[:id])
 		m.destroy
 		redirect_to user_path(current_user.id)
 		
 	end
 
-	def move_milestone_up
- 		@milestone = Milestone.find(params[:id])
- 		@milestone.move_higher
- 		redirect_to user_path(current_user.id)
-  	end
-
-	def move_milestone_down
-	   	@milestone = Milestone.find(params[:id])
- 		@milestone.move_lower
- 		redirect_to user_path(current_user.id)
-	end
 
 private
 

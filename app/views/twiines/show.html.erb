@@ -1,28 +1,26 @@
 
-<%#= render 'milestone_modal' %>
+<%= render 'milestone_modal' %>
 
 <div class="row">
-	<div class="col-md-1">
-		<div class="ratio" style="background-color:white" alt="responsive img"></div>
-		</div>
-		<h3><%= @twiine.name %> </h3>
+	<div class="col-md-1">	
+		<h2><%= @twiine.name %> </h2>
+	</div>
+
 </div>
-
-
-	<div class="row">
+	
 
 		<% @milestones.each do |p| %>
 			<div class="col-md-3">
-				<div class="ratio" style="background-color: white" alt="responsive img">
+				<div class="ratio" style="background-image: url(<%= p.image.url %>)" alt="responsive img">
 				</div>
 
 					<div class="carousel-caption">
-
+						<h1><span class="label label-default"><%= p.position %></span></h1>
 						<div class="carousel-caption-inner">
-							<h1><span class="label label-default"><%= p.position %></span></h1>
+							
 							<h1><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h1>
 							
-							<p> by <em> <%= User.find(p.user_id.to_s).name %></em> </p>
+							<p> by <em><%= User.find(@twiine.user_id).name %> </em> </p>
 							
 							<% if p.project  %>
 								<p>  working on <em><%= p.project %> </em>  </p>
@@ -44,5 +42,5 @@
 		</div>
 		<% end %>
 
-	</div>
+	
 </div>

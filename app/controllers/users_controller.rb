@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     @twiines = Twiine.where(user_id: @user.id)
     @twiine = @user.twiines.new
     @milestones = Milestone.where(user_id: @user.id)
-    @milestones.build
     @twiines.build
 
   end

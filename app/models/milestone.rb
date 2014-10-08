@@ -1,7 +1,5 @@
 class Milestone < ActiveRecord::Base
   
-
-  belongs_to :user
   belongs_to :twiine
 
   acts_as_list scope: :twiine
@@ -12,6 +10,17 @@ class Milestone < ActiveRecord::Base
   validates_presence_of :description
 
 
+def move_milestone_up
+ 		@milestone = Milestone.find(params[:id])
+ 		@milestone.move_higher
+ 		redirect_to user_path(current_user.id)
+end
+
+def move_milestone_down
+	   	@milestone = Milestone.find(params[:id])
+ 		@milestone.move_lower
+ 		redirect_to user_path(current_user.id)
+end
 
 end
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-resources :users do 
-  resources :milestones 
-  resources :twiines
+resources :users 
+resources :twiines do
+   resources :milestones
 end
 
 resource :session, only: [:new, :create, :destroy]
