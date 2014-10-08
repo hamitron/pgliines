@@ -23,8 +23,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @twiines = Twiine.where(user_id: @user.id)
     @twiine = @user.twiines.new
-    @milestones = Milestone.where(user_id: @user.id)
-    @twiines.build
+    
+    
 
   end
 
@@ -53,7 +53,8 @@ def user_params
       # These availabilities_attributes are because we had an
       # accepts_nested_attributes_for :milestones back in the
       # User model
-     twiines_attributes: [:id, :name, :category])
+     twiines_attributes: [:id, :name, :category],
+     milestones_attributes: [:image])
   end
   
 end

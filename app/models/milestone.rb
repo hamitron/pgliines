@@ -9,6 +9,7 @@ class Milestone < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :description
 
+scope :top_stone, find(position: 1) 
 
 def move_milestone_up
  		@milestone = Milestone.find(params[:id])

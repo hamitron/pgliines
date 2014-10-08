@@ -16,7 +16,7 @@
 	
 		<% @twiines.each do |p| %>
 			<div class="col-md-3">
-				<div class="ratio" style="background-color:white" alt="responsive img">
+				<div class="ratio" style="background-image:url(<%= p.milestones.top_stone.image %>)" alt="responsive img">
 				</div>
 
 					<div class="carousel-caption">
@@ -25,7 +25,7 @@
 							<h3><%= link_to p.name, twiine_path(p) %></h3>
 							Milestones Count: <%= p.milestones.count %>
 							Twiine ID: <%= p.id %>
-							<%= @milestones.where(twiine_id: p.id).count %>
+							
 
 							
 							

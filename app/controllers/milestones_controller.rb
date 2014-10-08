@@ -8,7 +8,6 @@ class MilestonesController < ApplicationController
 		@milestone = @twiine.milestones.find(params[:id])
 	end
 	def create
-		@user = User.find(current_user.id)
 		@twiine = Twiine.find(params[:twiine_id])
 		@milestone = @twiine.milestones.new(milestone_params)
 			if @milestone.save
