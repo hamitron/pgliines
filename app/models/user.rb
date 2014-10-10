@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   
   
   has_secure_password 
-  has_many :twiines
+  has_many :twiines, dependent: :destroy 
   accepts_nested_attributes_for :twiines
   has_many :milestones, through: :twiines
   accepts_nested_attributes_for :milestones

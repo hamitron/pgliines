@@ -1,6 +1,4 @@
 
-<%= render 'milestone_modal' %>
-
 <div class="row">
 	<div class="col-md-1">	
 		<h2><%= @twiine.name %> </h2>
@@ -8,36 +6,85 @@
 
 </div>
 	
+<div class="row">
+		<% @milestones.each_slice(5) do |slice| %>
+			<div class="row panel">
 
-		<% @milestones.each do |p| %>
-			<div class="col-md-3">
-				<div class="ratio" style="background-image: url(<%= p.image.url %>)" alt="responsive img">
-					<div class="carousel-caption">
-						
-						<div class="carousel-caption-inner">
+
+			<% slice.each do |p| %>
+			<div class="modal fade" id="<%=p.id%>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <img src="<%=p.image.url%>" class="img-responsive" alt="responsive img"/>
+
+
+
+      <div class="modal-body tab-content">
+            <div class="tab-pane active" id="<%=p.id%>home">
+                <h2> <%= p.name  %></h2>
+                
+                <p> <%= p.description %> </p> 
+                <% if @user == current_user %>
+                <p><a href="#<%=p.id%>edit" role="tab" data-toggle="tab">edit</a> | 
+               <em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
+              
+                <%= link_to "move up", [@twiine, p], method: :move_milestone_up %>
+                <%= link_to "move down", [@twiine, p], method: :move_milestone_down %></p>
+                <%end %> 
+                
+    
+        </div>
+        
+        <div class="tab-pane" id="<%=p.id%>edit">
+             <%= p.inspect %>
+                
+        
+        </div>
+
+
+        
+    </div>
+
+        <div class="modal-footer">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">close</span><span class="sr-only">close</span></button> 
+        </div>
+
+      
+    </div>
+  </div>
+</div>
+			
+				<div class="col-md-3">
+					<div class="ratio" style="background-image: url(<%= p.image.url %>)" alt="responsive img">
+						<div class="carousel-caption">
 							
-							<h1><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 14) %></a> </h1>
-							
-							<p> by <em><%= User.find(@twiine.user_id).name %> </em> </p>
+							<div class="carousel-caption-inner">
+								
+								<h1><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 14) %></a> </h1>
+								
+								<p> by <em><%= User.find(@twiine.user_id).name %> </em> </p>
+
+							</div>
 
 						</div>
 
 					</div>
 
+						
+
+						<div class="col-md-12">
+								<h1><span class="label label-default"><%= p.position %></span></h1>
+						</div>
 				</div>
+		<% end %>
+		</div>		
 
-					
-
-					<div class="col-md-12">
-							<h1><span class="label label-default"><%= p.position %></span></h1>
-					</div>
-			</div>
-			
+		
 		<% end %>
 
-
-
-		<% if current_user == @user %>
+</div>
+<div class="row">
+<% if current_user == @user %>
 		<div class="col-md-3">
 				
 				
@@ -45,6 +92,11 @@
 
 		</div>
 		<% end %>
+		</div>
+
+
+		
 
 	
 </div>
+
