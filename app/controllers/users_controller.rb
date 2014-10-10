@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
 
 	def index
     @users = User.all
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   end
  
   def create
-    @user = User.new(params.require(:user).permit(:name, :age, :email, :password, :image))
+    @user = User.new(user_params)
       if @user.save
         redirect_to new_session_path       
       else
@@ -53,7 +54,7 @@ def user_params
       # These availabilities_attributes are because we had an
       # accepts_nested_attributes_for :milestones back in the
       # User model
-     twiines_attributes: [:id, :name, :category],
+     twiines_attributes: [:id, :name, :category, :image, :fulfillment],
      milestones_attributes: [:image])
   end
   

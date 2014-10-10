@@ -1,25 +1,66 @@
-<div class="tab-content">
-  <div class="tab-pane active" id="plus">       
-      <a href="#new" role="tab" data-toggle="tab"><div class="new-milestone"></div></a>
-  </div>
-        
-        <div class="tab-pane " id="new">
-             
-                <%= form_for @twiine do |s| %>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                            <%= s.text_field :name, class: "form-control",  placeholder: "twiine name" %> 
-                    </div>
+<div class="row">
+	<% if current_user == @user %>
+		<div class="col-md-2">
+			
+		</div>
+		<div class="col-md-8">
+				<div class="jumbotron">
+			
+					<div class="tab-content">
+	  					<div class="tab-pane active" id="plus"> 
+	  						<h2> Get Started Here </h2>      
+	     					 <a href="#new" role="tab" data-toggle="tab"><div class="new-milestone"></div></a>
+	 					</div>
+		        
+						<div class="tab-pane" id="new">
+			             	<%= form_for @twiine do |s| %>
+			             	<div class="row">
+			                	
+			                	<div class="col-md-6">
+									<h3>What Are You Working On?</h3>
+								</div>
+								<div class="col-md-6">
+									<%= s.text_field :name, class: "form-control",  placeholder: "Name Your Twiine" %> 
+					            </div>    
+					        </div>
+					        <div class="row">
+					        	<div class="col-md-6">
+					    			<h3>What Kind of Project Is This?</h3>
+								</div>
+					        	<div class="col-md-6">            
+									<%= s.text_field :category, class: "form-control", placeholder: "Categorize Your Twiine"  %> 
+								</div>	
+					            
+									
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<h3>An Image to Get Started</h3>
+								</div>
+								<div class="col-md-6">
+					                <%= s.file_field :image, class: "form-control"%>
+					            </div>
+				
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<h3> All Set? </h3>
+								</div>
+							
+								<div class="col-md-3">
+					    			<%= s.submit "Create Twiine", class: "btn btn-default" %>
+								</div>
+							</div>
+			               	<% end %>
+			        	</div>
+		       				
+							
+						</div>
+					</div>
+				</div>
+	
 
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                            <%= s.text_field :category, class: "form-control", placeholder: "category"  %> 
-                    </div>
-
-                    <div class="form-group">
-                            <%= s.submit "Create Twiine", class: "btn btn-default" %>
-                            <%= s.hidden_field :user_id %>
-                    </div>
-                <% end %>
+	</div>
+	<% end %>
+	</div>
         
-        </div>

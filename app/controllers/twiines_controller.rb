@@ -38,7 +38,7 @@ class TwiinesController < ApplicationController
 private
 
 def twiine_params
-	params.require(:twiine).permit(:name, :fulfillment, :category,
+	params.require(:twiine).permit(:name, :fulfillment, :category, :image,
 		milestones_attributes:[:name, :description, :image, :position])
 end
 

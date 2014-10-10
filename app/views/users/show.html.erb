@@ -1,52 +1,32 @@
 
 <div class="row">
-	<div class="col-md-1">
-		<div class="ratio" style="background-image:url(<%=@user.image%>)" alt="responsive img"></div>
-		</div>
-		<h3> <%= @user.name %>
+		<%=image_tag @user.image, class:"user-box" %>
+		
+		<h3> <em> &nbsp; <%= @user.name %></em>
 			<% if @user.age != nil %>, <%= @user.age %> years old,
 			<%end%>
 			<% if @user.specialty != nil %> specializes in <%= @user.specialty %>.
 			<% end %>
 		</h3>
 </div>
-
-
+	<%= render 'twiine_form' %>
 	<div class="row">
 	
 		<% @twiines.each do |p| %>
 			<div class="col-md-3">
-				<div class="ratio" style="background-image:url(<%= p.milestones.top_stone.image %>)" alt="responsive img">
+				<div class="ratio" style="background-image:url(<%= p.image.url %>)" alt="responsive img">
 				</div>
 
 					<div class="carousel-caption">
-
-						<div class="carousel-caption-inner">
-							<h3><%= link_to p.name, twiine_path(p) %></h3>
+							<h2><%= link_to p.name, twiine_path(p) %></h2>
 							Milestones Count: <%= p.milestones.count %>
-							Twiine ID: <%= p.id %>
-							
-
-							
-							
-							
-							
-
-						</div>
 
 					</div>
 			</div>
 		<% end %>
-
-
-
-		<% if current_user == @user %>
-		<div class="col-md-3">
-			
-				<%= render 'twiine_form' %>
-
-		</div>
-		<% end %>
-
 	</div>
-</div>
+
+
+		
+
+	
