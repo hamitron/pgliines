@@ -12,7 +12,7 @@ class TwiinesController < ApplicationController
 		@twiine = Twiine.find(params[:id])
 		@user = User.find(@twiine.user_id)
 		@milestone = @twiine.milestones.new
-		@milestones = @twiine.milestones
+		@milestones = Milestone.where(:twiine_id => @twiine.id)
 		@milestones.build
 	end
 

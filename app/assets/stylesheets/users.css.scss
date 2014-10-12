@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .new-milestone {
+	text-align: center;
 	background-image: url(plus.svg);
-	width: 5em;
-    height: 5em;
+	width: 10em;
+    height: 10em;
     border-radius: 5px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -15,9 +16,10 @@
 }
 
 .new-goal {
+	text-align: center;
 	background-image: url(plus_goal.svg);
-	width: 5em;
-    height: 5em;
+	width: 10em;
+    height: 10em;
     border-radius: 5px;
     background-repeat: no-repeat;
     background-position: center center;
