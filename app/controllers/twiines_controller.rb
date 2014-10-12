@@ -39,7 +39,7 @@ private
 
 def twiine_params
 	params.require(:twiine).permit(:name, :fulfillment, :category, :image,
-		milestones_attributes:[:name, :description, :image, :position])
+		milestones_attributes:[:name, :description, :image, :position, :goal])
 end
 
 

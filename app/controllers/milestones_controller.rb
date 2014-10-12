@@ -6,9 +6,9 @@ class MilestonesController < ApplicationController
 	end
 	def create
 		@twiine = Twiine.find(params[:twiine_id])
-		@milestone = @twiine.milestones.new(params.require(:milestone).permit(:name, :description, :image, :project, :position))
+		@milestone = @twiine.milestones.new(params.require(:milestone).permit(:name, :description, :image, :project, :position, :goal))
 			if @milestone.save
-			redirect_to user_path(current_user.id)
+			redirect_to twiine_path(@twiine.id)
 		else 
 			render 'new'
 		end
@@ -17,8 +17,8 @@ class MilestonesController < ApplicationController
 
 	def update
 		@twiine = Twiine.find(params[:twiine_id])
-		@milestone = @twiine.milestones.find(params[:milestone_id])
-		@milestone.update_attributes(params.require(:milestone).permit(:name, :description, :image, :project, :position))
+		@milestone = @twiine.milestones.find(params[:id])
+		@milestone.update_attributes(params.require(:milestone).permit(:name, :description, :image, :project, :position, :goal))
 		if @milestone.save
 			redirect_to user_path(current_user.id)
 		else
@@ -36,18 +36,21 @@ class MilestonesController < ApplicationController
 		
 	end
 
-
 	def move_milestone_up
- 		@milestone = Milestone.find(params[:id])
- 		@milestone.move_higher
- 		redirect_to user_path(current_user.id)
-end
-
-def move_milestone_down
-	 @milestone = Milestone.find(params[:id])
- 		@milestone.move_lower
- 		redirect_to user_path(current_user.id)
-end
+		@twiine = Twiine.find(params[:twiine_id])
+		m= @twiine.milestones.find(params[:id])
+		m.move_higher
+		redirect_to twiine_path(@twiine.id)
+		
+	end
+	
+	def move_milestone_down
+		@twiine = Twiine.find(params[:twiine_id])
+		m= @twiine.milestones.find(params[:id])
+		m.move_lower
+		redirect_to twiine_path(@twiine.id)
+		
+	end
 
 
 

@@ -8,23 +8,24 @@
 	
 <div class="row">
 		<% @milestones.each do |p| %>
-			<div class="col-md-3">
-					<div class="ratio" style="background-image: url(<%= p.image.url %>)" alt="responsive img">
+			<div class="col-md-2">
+				<% if p.goal %>
+					<div class="ratio-goal" alt="goal image">
+
+				<% else %>
+					<div class="ratio" style="background-image: url(<%= p.image.url %>)" alt="milestone img">
+				<% end %>
+						<h3><span class="label label-default"><%= p.position %></span></h3>
 						<div class="carousel-caption">
-							<h1><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 14) %></a> </h1>
-						</div>			
-
-					</div>
-
-					</div>
-
-						
-
-						<div class="col-md-12">
-								<h1><span class="label label-default"><%= p.position %></span></h1>
+							<h2><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h2>
+							<div class="col-md-12">
+								
 						</div>
-				
+						</div>		
 
+					</div>
+					
+			</div>
 
 			<div class="modal fade" id="<%=p.id%>" tabindex="-1" role="dialog" aria-hidden="true">
 			  <div class="modal-dialog">
@@ -42,15 +43,36 @@
 				                <p><a href="#<%=p.id%>edit" role="tab" data-toggle="tab">edit</a> | 
 				               <em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
 				              
-				                <%= link_to "move up", [@twiine, p], method: :move_milestone_up %>
-				                <%= link_to "move down", [@twiine, p], method: :move_milestone_down %></p>
+				                <%= button_to "move up", [@twiine, p], :method => :move_milestone_up %>
+				                <%= button_to "move down", [@twiine, p], :method => :move_milestone_down %></p>
 				                <%end %> 
 				                
 				    
 				      	  	</div>
 				        
-       							 <div class="tab-pane" id="<%=p.id%>edit">
-           						  <%= p.inspect %>
+       							<div class="tab-pane" id="<%=p.id%>edit">
+           						  <%= form_for ([@twiine, p]) do |s| %>
+                    			<div class="form-group">
+                        			<label for="name">What Did You Achieve?</label>
+                            		<%= s.text_field :name, class: "form-control",  placeholder: "Milestone name" %> 
+                    			</div>
+
+			                    <div class="form-group">
+			                        <label for="description">Description</label>
+			                            <%= s.text_field :description, class: "form-control", placeholder: "Description"  %> 
+			                    </div>
+
+                     			<div class="form-group">
+                     				<label for="goal">Goal? Milestone?</label>
+                     				Milestone <%= s.radio_button :goal, false , :checked => true , :value => false %>
+                     				Goal <%= s.radio_button :goal, true, :value => true%>
+                     				
+                     			</div>
+    			                <div class="form-group">
+                			        <label for="image">Image</label>
+                            		<%= s.file_field :image, class: "form-control" %><%= s.submit "Create Milestone", class: "btn btn-default" %>
+                    			</div>
+                					<%end %>
        							 </div>
 
 
@@ -70,7 +92,7 @@
 		<% end %>
 			
 <% if current_user == @user %>
-		<div class="col-md-3">
+		<div class="col-md-2">
 				
 				
 				<%= render 'milestone_form' %>
