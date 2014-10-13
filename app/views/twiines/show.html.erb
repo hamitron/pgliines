@@ -1,21 +1,30 @@
 
 <div class="row">
-	<div class="col-md-1">	
+	<div class="col-md-8">	
 		<h2><%= @twiine.name %> </h2>
-	</div>
+		
 
+	</div>
+	<% if current_user == @user %>
+		<div class="col-md-2">
+				
+				
+				<%= render 'milestone_form' %>
+
+		</div>
+		<% end %>
 </div>
 	
 <div class="row">
 		<% @milestones.each do |p| %>
 			<div class="col-md-2">
+				<h3> <%= p.position %> </h3>
 				<% if p.goal %>
 					<div class="ratio-goal" alt="goal image">
 
 				<% else %>
 					<div class="ratio" style="background-image: url(<%= p.image.url %>)" alt="milestone img">
 				<% end %>
-						<h3><span class="label label-default"><%= p.position %></span></h3>
 						<div class="carousel-caption">
 							<h2><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h2>
 							<div class="col-md-12">
@@ -41,10 +50,8 @@
 				                <p> <%= p.description %> </p> 
 				                <% if @user == current_user %>
 				                <p><a href="#<%=p.id%>edit" role="tab" data-toggle="tab">edit</a> | 
-				               <em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
-				              
-				                <%= button_to "move up", [@twiine, p], :method => :move_milestone_up %>
-				                <%= button_to "move down", [@twiine, p], :method => :move_milestone_down %></p>
+				               		<em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
+				          		</p>
 				                <%end %> 
 				                
 				    
@@ -52,6 +59,9 @@
 				        
        							<div class="tab-pane" id="<%=p.id%>edit">
            						  <%= form_for ([@twiine, p]) do |s| %>
+
+
+
                     			<div class="form-group">
                         			<label for="name">What Did You Achieve?</label>
                             		<%= s.text_field :name, class: "form-control",  placeholder: "Milestone name" %> 
@@ -66,7 +76,7 @@
                      				<label for="goal">Goal? Milestone?</label>
                      				Milestone <%= s.radio_button :goal, false , :checked => true , :value => false %>
                      				Goal <%= s.radio_button :goal, true, :value => true%>
-                     				
+
                      			</div>
     			                <div class="form-group">
                 			        <label for="image">Image</label>
@@ -89,23 +99,13 @@
 			</div>
 			
 				
-		<% end %>
-			
-<% if current_user == @user %>
-		<div class="col-md-2">
-				
-				
-				<%= render 'milestone_form' %>
-
-		</div>
-		<% end %>
-
-		
-		
+		<% end %>	
 
 </div>
 
-
+<div class="row">
+<%= will_paginate @milestones, :page_links => false %>
+</div>
 
 
 		

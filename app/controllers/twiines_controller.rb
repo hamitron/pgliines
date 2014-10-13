@@ -12,7 +12,8 @@ class TwiinesController < ApplicationController
 		@twiine = Twiine.find(params[:id])
 		@user = User.find(@twiine.user_id)
 		@milestone = @twiine.milestones.new
-		@milestones = Milestone.where(:twiine_id => @twiine.id)
+		@milestones = Milestone.where(:twiine_id => @twiine.id).paginate(:page => params[:page], :per_page => 6).order('position ASC')
+
 		@milestones.build
 	end
 
