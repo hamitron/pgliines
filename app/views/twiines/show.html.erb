@@ -11,7 +11,7 @@
 					<h3><%= p.position %> </h3>
 						<div class="carousel-caption">
 
-							<h2><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h2>
+							<h3><a data-toggle="modal" data-target="#<%=p.id%>"> <%= truncate(p.name, length: 32) %></a> </h3>
 							<div class="col-md-12">
 								
 						</div>
@@ -24,8 +24,9 @@
 			<div class="modal fade" id="<%=p.id%>" tabindex="-1" role="dialog" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
+			    	<% if !p.goal %>
 			        <img src="<%=p.image.url%>" class="img-responsive" alt="responsive img"/>
-
+			        <% end %>
 
 
 				      <div class="modal-body tab-content">
@@ -33,7 +34,7 @@
 				                <h2> <%= p.name  %></h2>
 				                
 				                <p> <%= p.description %> </p> 
-				                <% if @user == current_user %>
+				                <% if @user == current_user || current_user.is_admin %>
 				                <p><a href="#<%=p.id%>edit" role="tab" data-toggle="tab">edit</a> | 
 				               		<em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
 				          		</p>
@@ -65,7 +66,7 @@
                      			</div>
     			                <div class="form-group">
                 			        <label for="image">Image</label>
-                            		<%= s.file_field :image, class: "form-control" %><%= s.submit "Create Milestone", class: "btn btn-default" %>
+                            		<%= s.file_field :image, class: "form-control" %><%= s.submit "Update", class: "btn btn-default" %>
                     			</div>
                 					<%end %>
        							 </div>

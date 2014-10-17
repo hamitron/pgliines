@@ -2,18 +2,16 @@ class TwiinesController < ApplicationController
 
 
 	def index
-		@twiine = Twiine.find(params[current_user.id])
-		@user = User.find(params[:id])
-		@milestones = Milestone.where(twiine_id: @twiine.id)
-		@milestones.build
+		@twiines = Twiine.where(params[current_user.id])
+		@user = User.find(current_user.id)
+		@milestones = Milestone.where(params[:twiine_id])
 	end
 
 	def show
 		@twiine = Twiine.find(params[:id])
 		@user = User.find(@twiine.user_id)
 		@milestone = @twiine.milestones.new
-		@milestones = Milestone.where(:twiine_id => @twiine.id).paginate(:page => params[:page], :per_page => 6).order('position ASC')
-
+		@milestones = @twiine.milestones.paginate(:page => params[:page], :per_page => 6).order('position ASC')
 		@milestones.build
 	end
 

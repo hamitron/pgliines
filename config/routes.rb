@@ -6,6 +6,7 @@ end
 
 resource :session, only: [:new, :create, :destroy]
 
+
 root 'welcome#index'
 
 
