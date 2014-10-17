@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_many :twiines, dependent: :destroy 
   accepts_nested_attributes_for :twiines
   has_many :milestones, through: :twiines
-  accepts_nested_attributes_for :milestones
 	has_attached_file  :image
   	
 

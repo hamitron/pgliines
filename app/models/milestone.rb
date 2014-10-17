@@ -2,6 +2,7 @@ class Milestone < ActiveRecord::Base
   	
   belongs_to :twiine
 
+
   acts_as_list scope: :twiine
   has_attached_file :image, :default_url => "/assets/missing.png"
 
