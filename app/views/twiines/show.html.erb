@@ -35,7 +35,7 @@
 				                <h2> <%= p.name  %></h2>
 				                
 				                <p> <%= p.description %> </p> 
-				                <% if @user == current_user || current_user.is_admin %>
+				                <% if @user == current_user  %>
 				                
 				                <p><a href="#<%=p.id%>edit" role="tab" data-toggle="tab">edit</a> | 
 				               		<em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
