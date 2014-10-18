@@ -36,6 +36,7 @@
 				                
 				                <p> <%= p.description %> </p> 
 				                <% if @user == current_user || current_user.is_admin %>
+				                
 				                <p><a href="#<%=p.id%>edit" role="tab" data-toggle="tab">edit</a> | 
 				               		<em><%= link_to "delete", [@twiine, p], :method => :delete %></em>
 				          		</p>
@@ -99,6 +100,7 @@
 	<div class="col-md-4">	
 	
 		<p><h1><%= @twiine.name %> </h1>
+		<button id="tracker"> Track </button>
 		
 		
 	</div>
@@ -135,6 +137,9 @@
 		</div>
 	</div>	
 
+<script>
+
+</script>
 
 
 

@@ -34,6 +34,10 @@ class TwiinesController < ApplicationController
 	def destroy
 	end
 
+	#this is so you can attach a foreign twiine(one that isn't yours), with yours.
+	#using the twiine array attribute that stores tracked twiine ids.
+
+	
 private
 
 def twiine_params
