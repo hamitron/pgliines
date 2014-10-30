@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 		#make sure we found a user, then make sure their password matches
 		if u && u.authenticate(params[:user][:password])
 			session[:user_id] = u.id.to_s
-			redirect_to user_path(current_user.id)
+			redirect_to root_path
 		else
 			redirect_to new_session_path
 		end

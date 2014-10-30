@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 resources :users 
-resources :twiines
-resources :milestones
+resources :twines
+resource :milestones, only: [:create, :update, :destroy]
+resource :stones, only: [:create, :update, :destroy]
+resources :tracks
 resource :session, only: [:new, :create, :destroy]
 
 
-root 'welcome#index'
+root 'dashboard#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

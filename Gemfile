@@ -21,6 +21,11 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'acts_as_list'
 
+
+#autho
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Use to create fake users
 gem 'faker', '1.4.2'
 

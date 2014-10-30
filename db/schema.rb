@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030011001) do
+ActiveRecord::Schema.define(version: 20141030035507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 20141030011001) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "track_id"
   end
 
+  add_index "milestones", ["track_id"], name: "index_milestones_on_track_id", using: :btree
   add_index "milestones", ["user_id"], name: "index_milestones_on_user_id", using: :btree
 
   create_table "stones", force: true do |t|
@@ -33,9 +35,21 @@ ActiveRecord::Schema.define(version: 20141030011001) do
     t.string   "shout"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "track_id"
   end
 
+  add_index "stones", ["track_id"], name: "index_stones_on_track_id", using: :btree
   add_index "stones", ["user_id"], name: "index_stones_on_user_id", using: :btree
+
+  create_table "tracks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tracks", ["user_id"], name: "index_tracks_on_user_id", using: :btree
 
   create_table "twines", force: true do |t|
     t.integer  "user_id"
