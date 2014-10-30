@@ -11,9 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141030011001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "milestones", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.float    "value"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "milestones", ["user_id"], name: "index_milestones_on_user_id", using: :btree
+
+  create_table "stones", force: true do |t|
+    t.float    "value"
+    t.integer  "user_id"
+    t.string   "shout"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stones", ["user_id"], name: "index_stones_on_user_id", using: :btree
+
+  create_table "twines", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "twines", ["user_id"], name: "index_twines_on_user_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "admin",           default: false
+  end
 
 end
