@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Twiine, :type => :model do
+RSpec.describe Stone, :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

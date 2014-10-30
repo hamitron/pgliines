@@ -11,59 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017185318) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "milestones", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "project"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "position"
-    t.integer  "twiine_id"
-    t.boolean  "goal"
-  end
-
-  add_index "milestones", ["twiine_id"], name: "index_milestones_on_twiine_id", using: :btree
-
-  create_table "twiines", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "fulfillment"
-    t.string   "name"
-    t.string   "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "is_private",         default: false
-    t.integer  "tracking",                           array: true
-    t.integer  "followed"
-  end
-
-  add_index "twiines", ["user_id"], name: "index_twiines_on_user_id", using: :btree
-
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.integer  "age"
-    t.string   "specialty"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_admin",           default: false
-  end
 
 end

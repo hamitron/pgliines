@@ -37,13 +37,11 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
-gem 'rspec-rails', '~> 3.0.0'
+gem 'rspec-rails'
 gem 'better_errors'
 gem 'shoulda-matchers'
-gem 'jasmine', github: "pivotal/jasmine-gem"
 gem "capybara"
 gem "database_cleaner"
-gem "poltergeist"
 end
 
 gem 'rails_12factor'

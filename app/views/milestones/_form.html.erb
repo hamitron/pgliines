@@ -1,9 +1,0 @@
-<p><%= form_for :milestone do |f| %>  </p>
-  
-    <h3> Add New </h3>
-        <p><%= f.file_field :image %></p>
-        <p><%= f.text_field :name,  placeholder: "Milestone name" %></p>
-        <p><%= f.text_field :description, placeholder: "Description" %></p>
-        <p><%= f.hidden_field :user_id %> </p>
-        <%= f.submit "Create Milestone"%> 
-        <% end %>
