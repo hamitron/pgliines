@@ -1,0 +1,33 @@
+
+
+
+<% @tracks.each do |t| %>
+<div class="col-md-4">
+<h3><%= t.name %></h3>
+<div class="timeline-block">
+
+<div class="timeline-block-track">
+
+Milestones
+<% t.milestones.turned_stone(t.stones.last.value).each do |m| %>
+<div class="timeline-block-milestone">
+<%= m.value.to_s + " " + "#{t.descriptor}" %>
+</div>
+<%end %>
+
+
+Stones
+<% t.stones.each do |s| %>
+<div class="timeline-block-stone">
+<%= s.value %>
+</div>
+<%end %>
+
+</div>
+</div>
+</div>
+<%end %>
+
+
+
+

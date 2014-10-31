@@ -1,9 +1,13 @@
-DASHBOARD
+<h1>DASHBOARD</h1>
 
 <% if logged_in? %>
 
 	LOGGED IN
 
 <% else %>
- LOG IN
+<div class="container">
+<%= render "partials/timeline" %>
+
+
+</div>
 <% end %>
