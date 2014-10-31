@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
 def index
 
 	@users = User.all
-	@tracks = Track.joins(:milestones, :stones).uniq
+	#only shows tracks that have milestones and stones
+	@tracks = Track.joins(:milestones,:stones).uniq
 
 end
 
