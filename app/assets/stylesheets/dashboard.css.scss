@@ -3,21 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.col-md-4 {
 
+}
 
 
 .timeline-block {
   position: relative;
-  padding: 2em 0;
+  padding: 1em;
   margin-top: 0em;
+  margin-left: 2em;
   margin-bottom:0em;
+  background-color: lightgrey;
 }
 .timeline-block::before {
   /* this is the vertical line */
   content: '';
   position: absolute;
   top: 0;
-  left: 40px;
   height: 100%;
   width: 4px;
   background: #d7e4ed;
@@ -26,8 +29,33 @@
 
 .timeline-block-milestone {
 	position: relative;
-	left: 60px;
+	left: 3em;
 }
+
+.timeline-block-milestone::before{
+	content: '';
+	position: absolute;
+	border:6px solid #abe4ed;
+	border-radius: 6px;
+	left:-3.3em;
+	height: 50%;
+}
+
+.timeline-block-stone {
+	position: relative;
+	right: 4em;
+}
+
+.timeline-block-stone::before{
+	content: '';
+	position: absolute;
+	border:6px solid #d7e4ed;
+	border-radius: 6px;
+	left:3.7em;
+	height: 50%;
+}
+
+
 
 .timeline-block-track {
 	position: relative;

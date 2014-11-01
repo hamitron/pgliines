@@ -1,13 +1,19 @@
-<h1>DASHBOARD</h1>
+
 
 <% if logged_in? %>
-
-	LOGGED IN
+<h1>DASHBOARD</h1>
+<div class="container-fluid">
+	<%= render "partials/timeline" %>
+	<%= link_to "log out", session_path, method: :delete %>
+</div>
 
 <% else %>
+
 <div class="container">
-<%= render "partials/timeline" %>
-
-
+	<div class="jumbotron">
+		<h1> twiines </h1>
+	</div>
+	<%= render "partials/timeline" %>
 </div>
+
 <% end %>

@@ -1,0 +1,2 @@
+class TwinesController < ApplicationController
+end

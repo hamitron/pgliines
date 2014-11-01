@@ -2,13 +2,13 @@
 
 
 <% @tracks.each do |t| %>
-<div class="col-md-3">
+<div class="col-md-4">
 <h3><%= t.name %></h3>
+
 <div class="timeline-block">
 
 <div class="timeline-block-track">
 
-Milestones Remaining
 <!-- This is the view logic for the scope turned_stone.  It hides completed milestones from the view -->
 <% t.milestones.turned_stone(t.stones.last.value).each do |m| %>
 <div class="timeline-block-milestone">
@@ -16,8 +16,6 @@ Milestones Remaining
 </div>
 <%end %>
 
-
-Stones
 <% t.stones.each do |s| %>
 <div class="timeline-block-stone">
 <%= s.value.to_s + " " + "#{t.descriptor}"  %>
