@@ -1,0 +1,17 @@
+<div class="col-md-2">
+STONE
+
+<%= form_for @stone do |s| %>
+
+<%= s.select :track_id, @tracks.collect {|t| [t.name, t.id]},{}, { class: "form-control"} %>
+<%= s.number_field :value, class: "form-control", placeholder: "Value", step: 'any'  %> 
+<%= s.file_field :image, placeholder: "Image" %>
+<%= s.text_field :shout, class: "form-control", placeholder: "Shout Out" %>
+ <%= s.submit "Create Stone", class: "btn btn-default" %>
+
+
+ <%end %>
+
+
+</div>
+

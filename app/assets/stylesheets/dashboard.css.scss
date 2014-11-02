@@ -3,33 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.col-md-4 {
-
-}
-
 
 .timeline-block {
+
   position: relative;
   padding: 1em;
   margin-top: 0em;
-  margin-left: 2em;
+  
   margin-bottom:0em;
-  background-color: lightgrey;
+  
 }
+
+
 .timeline-block::before {
   /* this is the vertical line */
   content: '';
+  overflow: hidden;
   position: absolute;
   top: 0;
   height: 100%;
-  width: 4px;
+  width: 2px;
   background: #d7e4ed;
 }
 
 
 .timeline-block-milestone {
 	position: relative;
-	left: 3em;
+	left: 1em;
 }
 
 .timeline-block-milestone::before{
@@ -37,25 +37,48 @@
 	position: absolute;
 	border:6px solid #abe4ed;
 	border-radius: 6px;
-	left:-3.3em;
+	left:-1.4em;
+	top:0.5em;
 	height: 50%;
+}
+
+
+
+
+.timeline-block-header {
+	position: relative;
+	text-align: center;
+	background-color: #d6e8fb;
+	border-radius: 2px;
+	width: 50%;
+	
 }
 
 .timeline-block-stone {
 	position: relative;
-	right: 4em;
+	left: 3em;
 }
 
 .timeline-block-stone::before{
 	content: '';
 	position: absolute;
-	border:6px solid #d7e4ed;
+	border:6px solid #ed6b5f;
 	border-radius: 6px;
-	left:3.7em;
-	height: 50%;
+	left:-3.4em;
+	top: 0.5em;
+	height: 40%;
+
 }
 
-
+.timeline-block-image{
+	content: '';
+	position: relative;
+	border:2px solid #ed6b5f;
+	border-radius: 3px;
+	left:0em;
+	width: 8em;
+	height: 8em;
+}
 
 .timeline-block-track {
 	position: relative;

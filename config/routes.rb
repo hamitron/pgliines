@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 resources :users 
 resources :twines
-resource :milestones, only: [:create, :update, :destroy]
+resource :milestones, only: [:create, :edit, :update, :destroy]
 resource :stones, only: [:create, :update, :destroy]
 resources :tracks
 resource :session, only: [:new, :create, :destroy]

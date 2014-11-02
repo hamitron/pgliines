@@ -1,13 +1,14 @@
 
 
+
 <div class="row">
 <% @tracks.each do |t| %>
 
 
 
-<div class="col-md-3">
+<div class="col-md-4">
 <div class="timeline-block-header">
-	<%= t.name %>
+	<h3><%= t.name %></h3>
 </div>
 <div class="timeline-block ">
 
@@ -40,6 +41,5 @@
 <%end %>
 </div>
 
-
-
-
+<%= render template: "milestones/new" %>
+<%= render template: "stones/new" %>

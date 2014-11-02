@@ -1,0 +1,21 @@
+
+
+<div class="col-md-2">
+MILESTONE
+
+<%= form_for @milestone do |s| %>
+
+
+<%= s.select :track_id, @tracks.collect {|t| [t.name, t.id]},{}, { class: "form-control"} %>
+<%= s.number_field :value, class: "form-control", placeholder: "Value", step: 'any'  %> 
+ <%= s.submit "Create Milestone", class: "btn btn-default" %>
+
+
+ <%end %>
+
+
+
+</div>
+
+
+
